@@ -30,6 +30,9 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include=".gcloudignore" />
+    <Content Include=".gitattributes" />
+    <Content Include=".gitignore" />
     <Content Include="app.yaml" />
     <Content Include="public\stylesheets\styles.css" />
     <Content Include="views\chatWindow.pug" />

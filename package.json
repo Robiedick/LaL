@@ -5,7 +5,8 @@
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",
-    "start": "ts-node app.ts"
+    "prestart": "npm run build",
+    "start": "node dist/app.js"
   },
   "description": "LaL",
   "author": {
