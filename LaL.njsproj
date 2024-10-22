@@ -30,6 +30,13 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="app.yaml" />
+    <Content Include="public\stylesheets\styles.css" />
+    <Content Include="views\chatWindow.pug" />
+    <Content Include="views\footer.pug" />
+    <Content Include="views\header.pug" />
+    <Content Include="views\index.pug" />
+    <Content Include="views\statsDisplay.pug" />
     <None Include="app.ts" />
     <None Include="routes\index.ts" />
     <None Include="routes\user.ts" />
@@ -37,9 +44,6 @@
     <Content Include="package.json" />
     <Content Include="public\stylesheets\main.css" />
     <Content Include="README.md" />
-    <Content Include="views\index.pug" />
-    <Content Include="views\layout.pug" />
-    <Content Include="views\error.pug" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="public\" />
