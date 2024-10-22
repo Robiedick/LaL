@@ -36,6 +36,7 @@
     <Content Include="app.yaml" />
     <Content Include="public\stylesheets\styles.css" />
     <Content Include="views\chatWindow.pug" />
+    <Content Include="views\error.pug" />
     <Content Include="views\footer.pug" />
     <Content Include="views\header.pug" />
     <Content Include="views\index.pug" />

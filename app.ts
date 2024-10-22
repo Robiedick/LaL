@@ -1,9 +1,8 @@
-import * as express from 'express';
-import { AddressInfo } from "net";
+import express, { Request, Response, NextFunction } from 'express';
 import * as path from 'path';
-
 import routes from './routes/index';
 import users from './routes/user';
+import { AddressInfo } from "net";
 
 const debug = require('debug')('my express app');
 const app = express();
@@ -12,25 +11,24 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-app.use(express.static(path.join(__dirname, 'public')));
+// Serve static files
+app.use(express.static(path.join(__dirname, '../public')));
 
+// Routes
 app.use('/', routes);
 app.use('/users', users);
 
-// catch 404 and forward to error handler
-app.use((req, res, next) => {
+// Catch 404 and forward to error handler
+app.use((req: Request, res: Response, next: NextFunction) => {
     const err = new Error('Not Found');
-    err[ 'status' ] = 404;
+    (err as any)['status'] = 404;  // Type assertion to allow the 'status' property
     next(err);
 });
 
-// error handlers
-
-// development error handler
-// will print stacktrace
+// Error handler for development
 if (app.get('env') === 'development') {
-    app.use((err, req, res, next) => { // eslint-disable-line @typescript-eslint/no-unused-vars
-        res.status(err[ 'status' ] || 500);
+    app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+        res.status(err.status || 500);
         res.render('error', {
             message: err.message,
             error: err
@@ -38,9 +36,8 @@ if (app.get('env') === 'development') {
     });
 }
 
-// production error handler
-// no stacktraces leaked to user
-app.use((err, req, res, next) => { // eslint-disable-line @typescript-eslint/no-unused-vars
+// Error handler for production
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
     res.status(err.status || 500);
     res.render('error', {
         message: err.message,
@@ -48,8 +45,8 @@ app.use((err, req, res, next) => { // eslint-disable-line @typescript-eslint/no-
     });
 });
 
+// Start the server
 app.set('port', process.env.PORT || 3000);
-
-const server = app.listen(app.get('port'), function () {
+const server = app.listen(app.get('port'), () => {
     debug(`Express server listening on port ${(server.address() as AddressInfo).port}`);
 });

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "tsc --build",
+    "build": "tsc --build && xcopy /E /I /Y \"./views\" \"./dist/views\"",
     "clean": "tsc --build --clean",
     "prestart": "npm run build",
     "start": "node dist/app.js"
