@@ -3,10 +3,47 @@ html
   head
     title LaL - Live Another Life
     link(rel="stylesheet", href="/stylesheets/styles.css")
+    script(src="https://code.jquery.com/jquery-3.6.0.min.js")  <!-- For dropdown toggles -->
   body
-    include header
-    div.main-content
-      include chatWindow
-      include statsDisplay
-    include footer
-    script(src="/scripts.js")
+    .container
+      header.header
+        .life-section
+          button.life-button Life
+          .dropdown#life-dropdown
+            ul.dropdown-content
+              li Character
+              li Stats
+              li Properties
+              li Items
+              li Relations
+              li Family
+              li Health
+        .menu-section
+          .dropdown#menu-dropdown
+            button.dropdown-btn Menu
+            ul.dropdown-content
+              li New Life
+              li Save
+              li Load
+              li About
+              li Exit
+          .dropdown#options-dropdown
+            button.dropdown-btn Options
+            ul.dropdown-content
+              li Settings
+              li Debug
+              li Cheats
+              li Logout
+
+      main.main-content
+        .interaction-area
+          .chat-window
+            p This is where the chat/game interaction will happen.
+          .npc-stats-container
+            .npc-image NPC Image Placeholder
+            .main-stats Main Stats Placeholder
+
+      footer.footer
+        form.chat-input
+          input(type="text" placeholder="Enter your action here...")
+          button(type="submit") Send
